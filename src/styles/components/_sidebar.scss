@@ -1,8 +1,0 @@
-.sidebar {
-  position: fixed;
-  @include wh($sidebar-width, 100vh);
-  left: 0;
-  z-index: 111;
-  color: $white;
-  background-color: $black;
-}

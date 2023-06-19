@@ -1,0 +1,58 @@
+.dark{
+  .sidebar-page{
+    background-color: $gray-20;
+    border-color: $gray-30;
+
+    .title-sidebar{
+      color: $white;
+    }
+
+    .toogle-container{
+      background-color: $gray-10;
+    }
+  }
+
+  .header-content{
+    background-color: $gray-20;
+    border-color: $gray-30;
+
+    .title-content{
+      color: $white;
+    }
+  }
+
+  .content-board{
+    background-color: $gray-10;
+    color: $gray-40;
+
+    .board-item{
+      background: $gray-20;
+      
+      .board-box{
+        &::-webkit-scrollbar-track {
+          background: $gray-30; 
+        }
+         
+        &::-webkit-scrollbar-thumb {
+          background: $gray-40; 
+        }
+        
+        &::-webkit-scrollbar-thumb:hover {
+          background: $gray-50; 
+        }
+      }
+
+      h3{
+        color: $white;
+      }
+    }
+  }
+
+  .modal-open-task{
+    background: $gray-20;
+
+    .modal-title{
+      color: $white;
+    }
+  }
+}

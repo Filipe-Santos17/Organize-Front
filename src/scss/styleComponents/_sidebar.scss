@@ -1,0 +1,133 @@
+.sidebar-page {
+  @include wh($sidebar-width, 100%);
+  @include flex(normal, center, 20px, column);
+  border-right: 1px solid $gray-50;
+  background-color: $white;
+
+  header {
+    width: 100%;
+    text-align: center;
+    padding: 32px 0 54px 34px;
+
+    .title-sidebar {
+      position: relative;
+      @include flex(normal, center, 15px);
+
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 25px;
+        height: 6px;
+        background-color: rgba($color: $primary, $alpha: .75);
+        border-radius: 2px;
+        box-shadow: 0 .75rem rgba($color: $primary, $alpha: 1), 0 -0.75rem rgba($color: $primary, $alpha: .5);
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  .sidebar-list {
+    width: 100%;
+
+    .sidebar-boards-number {
+      @include styleText(700, .75rem, 15px, 2.4px, $gray-40);
+      margin: 0 2rem 1.25rem;
+      text-transform: uppercase;
+    }
+
+    ul {
+      width: calc(100% - 2rem);
+
+      li {
+        @include flex(normal, center, 1rem);
+        padding: .875rem 1.5rem .875rem 2rem;
+        cursor: pointer;
+
+        p {
+          @include styleText(700, .9375rem, 1.1875rem, 0, $gray-40);
+        }
+
+        svg {
+          color: $gray-40;
+        }
+
+        &.active {
+          background-color: $primary;
+          border-radius: 0px 100px 100px 0px;
+
+          p,
+          svg {
+            color: $white;
+          }
+        }
+
+        &.item-create {
+          background-color: transparent;
+
+          svg,
+          p {
+            color: $primary;
+          }
+        }
+      }
+    }
+  }
+
+  .sidebar-confs {
+    width: 100%;
+
+    .toogle-container {
+      background: $gray-60;
+      border-radius: 6px;
+      width: calc(100% - 3rem);
+      margin-left: 1.5rem;
+      padding: .875rem 0;
+      @include flex(center, center, 1.5rem)
+    }
+
+    .toogle-box {
+      position: relative;
+      display: inline-block;
+      width: 40px;
+      height: 20px;
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+
+      input#input-color-page[type='checkbox'] {
+        display: none;
+      }
+
+      .toogle-checkbox {
+        position: absolute;
+        cursor: pointer;
+        inset: 0;
+        -webkit-transition: .4s;
+        transition: .4s;
+        border-radius: 20px;
+        background-color: $primary;
+
+        &::before {
+          position: absolute;
+          content: "";
+          height: 14px;
+          width: 14px;
+          left: 4px;
+          bottom: 4px;
+          background-color: $white;
+          -webkit-transition: .4s;
+          transition: .4s;
+          border-radius: 100%;
+        }
+
+        &.dark-ativo{
+          &::before {
+            -webkit-transform: translateX(20px);
+            -ms-transform: translateX(20px);
+            transform: translateX(20px);
+          }
+        }
+      }
+    }
+  }
+}

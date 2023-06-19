@@ -1,0 +1,98 @@
+.content-board {
+  @include wh(100%, calc(100% - $content-height));
+  max-width: 100%;
+  background-color: $gray-60;
+  overflow-x: scroll;
+
+  &.no-items {
+    @include flex(center, center, 2rem, column);
+
+    p {
+      @include styleText(700, 1.125rem, 1.4375rem, 0, $gray-40); 
+      text-align: center;
+    }
+  }
+
+  &.with-items{
+    padding: 1.5rem 0 3rem 1.5rem;
+    @include flex(flex-start, flex-start, 1.5rem);
+
+    &::-webkit-scrollbar {
+      width: 2px;
+      height: 6px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: $gray-50; 
+      border-radius: 10px;
+    }
+     
+    &::-webkit-scrollbar-thumb {
+      background: $gray-30; 
+      border-radius: 10px;
+    }
+    
+    &::-webkit-scrollbar-thumb:hover {
+      background: $gray-40; 
+    }
+  }
+
+  .board-column{
+    @include flex(normal, normal,.625rem, column);
+    max-height: 100%;
+  
+    .board-box{
+      @include flex(normal, normal,.625rem, column);
+      min-width: 17.5rem;
+      max-height: 100%;
+      overflow-y: scroll;
+
+      &::-webkit-scrollbar {
+        width: 10px;
+      }
+      
+      &::-webkit-scrollbar-track {
+        background: $gray-50; 
+        border-radius: 10px;
+      }
+       
+      &::-webkit-scrollbar-thumb {
+        background: $gray-30; 
+        border-radius: 10px;
+      }
+      
+      &::-webkit-scrollbar-thumb:hover {
+        background: $gray-40; 
+      }
+    }
+
+    h3{
+      @include styleText(700, .75rem, .9375rem, 2.4px, $gray-40); 
+      margin-bottom: 1.5rem;
+    }
+
+    .board-item{
+      background: $white;
+      box-shadow: 0px 4px 6px #364e7e1a;
+      border-radius: 8px;
+      padding: 1.5rem 1rem;
+      max-width: 280px;
+      height: max-content;
+      cursor: pointer;
+      margin: 0 6px;
+
+      h3{
+        @include styleText(700, .9375rem, 1.1875rem, 2.4px, $black); 
+      }
+
+      h5{
+        @include styleText(700, .75rem, .9375rem, normal, $gray-40); 
+      }
+
+      &:hover, &:focus{
+        translate: 0 -5px;
+        box-shadow: 0 5px 8px 0 rgba(0, 0,0,.2);
+      }      
+    }
+  }
+}

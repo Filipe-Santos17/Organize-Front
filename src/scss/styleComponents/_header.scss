@@ -1,0 +1,27 @@
+.header-content{
+  @include flex(space-between, center);
+  @include wh(100%, $content-height);
+  border-bottom: 1px solid $gray-50;
+
+  .title-content{
+    @include styleText(700, 1.5rem, 1.875rem, normal, $black);
+    padding-left: 1.5rem;
+  }
+
+  .header-button-box{
+    @include flex(normal, center, 1.5rem);
+    padding-right: 30px;
+
+    .header-options{
+      &::after{
+        content: '';
+        display: block;
+        background-color: $gray-40;
+        width: 4.6px;
+        height: 4.6px;
+        border-radius: 100%;
+        box-shadow: 0 6px $gray-40, 0 -6px $gray-40;
+      }
+    }
+  }
+}
