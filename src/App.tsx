@@ -1,25 +1,24 @@
-import Sidebar from "./components/Sidebar";
-import Header from "./components/Header";
-import MainContent from "./components/MainContent";
-import ModalOpenTask from "./components/modais/OpenTask";
-//Fecth para o backend para pegar o numero de tarefas
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import BoardsHome from "./pages/BoardsHome"
+//import ProtectedRouter from "./auth/protectedRouter"
+import LoginUser from "./pages/LoginUser"
+import CreateUser from "./pages/CreateUser"
+import ForgetUser from "./pages/ForgetUser"
 
-import data from "./data.json";
-import { useState } from "react";
+//<ProtectedRouter> <BoardsHome/> </ProtectedRouter>
 
 function App() {
-  const [board, setBoard] = useState<object>({})
-  const [openModalTask, setOpenModalTask] = useState<boolean>(false)
-
   return (
-    <>
-      <Sidebar listData={data.boards} />
-      <main className="main-content">
-        <Header />
-        <MainContent listData={data.boards} setModalTask={setOpenModalTask} />
-      </main>
-      {openModalTask && <ModalOpenTask setModalTask={setOpenModalTask} />}
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<BoardsHome />} />
+        <Route path="/login/*">
+          <Route index element={<LoginUser />} />
+          <Route path="create/" element={<CreateUser />} />
+          <Route path="forget/" element={<ForgetUser />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 

@@ -1,4 +1,4 @@
-const url = ''
+const url = 'http://localhost:8080/api/'
 
 export function getData(token: string) {
   return {
@@ -8,6 +8,33 @@ export function getData(token: string) {
       headers: {
         Authorization: `${token}`,
       },
+    },
+  }
+}
+
+//Login 
+export function routeCreateUser(value: object) {
+  return {
+    url: url + "create",
+    options: {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(value)
+    },
+  }
+}
+
+export function routeLoginUser(value: object) {
+  return {
+    url: url + "create",
+    options: {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(value)
     },
   }
 }

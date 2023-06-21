@@ -38,4 +38,13 @@ body{
     opacity: .5;
     cursor: not-allowed;
   }
+
+  &:hover{
+    background: $purpleLigth;
+  }
+}
+
+.error-message {
+  @include styleText(500, .75rem, .9375rem, normal, $red);
+  margin: .25rem 0;
 }
