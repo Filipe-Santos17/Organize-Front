@@ -2,11 +2,29 @@ import { useCallback, useState } from "react";
 
 const useFetch = () => {
   const [data, setData] = useState<object>({});
-  const [load, setLoad] = useState<boolean | string>(false);
-  const [erro, setErro] = useState<boolean>(false);
+  const [load, setLoad] = useState<boolean>(false);
+  const [erro, setErro] = useState<boolean | string>(false);
 
-  const request = useCallback(async (url: string, options: object) => {
-    let response, json;
+  interface Data {
+    status: 'ok',
+    ErroMsg: string,
+    token: string,
+    userData: {
+      email: string,
+      id: number,
+      name: string,
+    }
+    boards: object[],
+  }
+
+  type returnF<T> = {
+    response: Promise<Response>,
+    json: T,
+  }
+
+  const request = useCallback(async (url: string, options: object): Promise<returnF<Data>> => {
+    let response: Response | undefined;
+    let json: Data | undefined;
 
     try {
       setErro(false);
@@ -16,19 +34,18 @@ const useFetch = () => {
       json = await response.json();
 
       if (response.ok === false) {
-        setErro(json.ErroMsg)
+        if (json && json.ErroMsg) {
+          setErro(json.ErroMsg)
+        }
       }
     } catch (err) {
-      json = null;
+      json = undefined;
       setErro(err.message);
     } finally {
-      setData(json);
+      setData(json ? json : {});
       setLoad(false);
 
-      return { 
-        response, 
-        json 
-      };
+      return { response, json };
     }
   }, []);
 

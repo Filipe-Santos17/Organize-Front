@@ -4,10 +4,11 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
   content: string,
   handleClickButton?: () => void | null,
   isDisabled?: boolean,
+  classStyle?: string
 }
 
-export default function Button({content, handleClickButton, isDisabled = false}: ButtonProps) {
+export default function Button({content, handleClickButton, isDisabled = false, classStyle}: ButtonProps) {
   return (
-    <button className="btn" onClick={handleClickButton} disabled={isDisabled}>{content}</button>
+    <button className={`btn ${classStyle ? classStyle : '' }`} onClick={handleClickButton} disabled={isDisabled}>{content}</button>
   )
 }

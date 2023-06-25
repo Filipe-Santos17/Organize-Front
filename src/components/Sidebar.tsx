@@ -5,13 +5,21 @@ import useThemeColor from "../hooks/useThemeColor";
 import { useRef } from "react";
 import { jsonDataPattern } from "../helpers/Types";
 
+type sidebar = {
+  boards: jsonDataPattern,
+  setNewBoard: React.Dispatch<React.SetStateAction<boolean>>
+}
 
-export default function Sidebar({ listData }: jsonDataPattern) {
+export default function Sidebar({ boards, setNewBoard }: sidebar) {
   const [color, setColor] = useThemeColor()
   const inputColorPage = useRef<HTMLInputElement>(null)
 
   function handleColorPage() {
     setColor(inputColorPage.current?.checked ? 'dark' : 'light')
+  }
+
+  function openModalNewBoard(){
+    setNewBoard(true)
   }
 
   return (
@@ -20,15 +28,15 @@ export default function Sidebar({ listData }: jsonDataPattern) {
         <h1 className="title-sidebar">Organize</h1>
       </header>
       <section className="sidebar-list">
-        <p className="sidebar-boards-number">All Boards ({listData.length})</p>
+        <p className="sidebar-boards-number">All Boards ({boards.length})</p>
         <ul>
-          {listData.map((item, idNumber) => (
+          {boards.map((item, idNumber) => (
             <li key={idNumber} className={idNumber === 0 ? 'active' : ''}>
               <IconeSidebar />
               <p>{item.name}</p>
             </li>
           ))}
-          <li className="item-create">
+          <li className="item-create" onClick={openModalNewBoard}>
             <IconeSidebar />
             <p>+ Create New Board</p>
           </li>

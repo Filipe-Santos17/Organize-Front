@@ -18,6 +18,36 @@
     @include flex(flex-start,center, 1.5rem, column);
   }
 
+  .modal-new-board{
+    width: 480px;
+    height: max-content;
+    border-radius: .375rem;
+    background: $white;
+    padding: 2rem;
+
+    .modal-title{
+      margin-bottom: 1.5rem;
+    }
+
+    .box-todos-column{
+      margin: 1.5rem 0 .75rem;
+    }
+
+    .board-container{
+      @include flex(center, center, 1rem);
+      width: 100%;
+    }
+
+    .modal-new-board-box-buttons{
+      @include flex(center, center, 1.5rem, column);
+      width: 100%;
+
+      button{
+        width: 100%;
+      }
+    }
+  }
+
   .modal-title{
     @include styleText(700, 1.125rem, 1.4375rem, normal, $black);
   }

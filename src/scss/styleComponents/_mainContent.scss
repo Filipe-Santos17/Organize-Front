@@ -2,7 +2,7 @@
   @include wh(100%, calc(100% - $content-height));
   max-width: 100%;
   background-color: $gray-60;
-  overflow-x: scroll;
+  overflow-x: auto;
 
   &.no-items {
     @include flex(center, center, 2rem, column);

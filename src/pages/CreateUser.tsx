@@ -8,12 +8,12 @@ import { routeCreateUser } from "../helpers/Api"
 import { useNavigate } from "react-router-dom"
 import ErroMsg from "../components/ErroMsg"
 
-export default function LoginUser() {
+export default function CreateUser() {
 
   const nameForm = useForm('name')
   const emailForm = useForm('email')
   const passwordForm = useForm('password')
-  const { load, erro, data, request } = useFetch()
+  const { load, erro, request } = useFetch()
   const navigate = useNavigate()
 
   async function handleSubmitForm(e: FormEvent) {
@@ -28,8 +28,10 @@ export default function LoginUser() {
 
       const { json, response } = await request(url, options)
 
-      if(json.status?.ok){
-        navigate('/')
+      if ((await response).status == 201) {
+        if (json.status === "ok") {
+          navigate('/login')
+        }
       }
     }
   }
@@ -40,8 +42,8 @@ export default function LoginUser() {
       <section className="section-form">
         <form onSubmit={handleSubmitForm}>
           <div className="title-box">
-            <h1>Fazer Login</h1>
-            <p>Seja bem-vindo(a)!  Insira seu e-mail e senha para entrar em sua conta.</p>
+            <h1>Crie seu usuário</h1>
+            <p>Seja bem-vindo(a)!  Insira seu nome, e-mail e senha para criar sua conta.</p>
           </div>
           <div className="inputs-form">
             <InputBox labelName="Nome" idName="user" typeInput="text" placeholderText="Insira seu nome" {...nameForm}/>
@@ -49,7 +51,7 @@ export default function LoginUser() {
             <InputBox labelName="Senha" idName="password" typeInput="password" placeholderText="Insira sua senha " {...passwordForm}/>
             {erro && <ErroMsg erro={erro}/>}
           </div>
-          {load ? <Button content="Carregando..." disabled/> : <Button content="Entrar" type="submit"/> }
+          {load ? <Button content="Carregando..." disabled/> : <Button content="Enviar" type="submit"/> }
         </form>
       </section>
     </section>

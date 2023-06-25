@@ -42,6 +42,11 @@ body{
   &:hover{
     background: $purpleLigth;
   }
+
+  &.secondary{
+    background: rgba($color: $primary, $alpha: 0.102);
+    color: $primary;
+  }
 }
 
 .error-message {
